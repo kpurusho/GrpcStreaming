@@ -1,0 +1,52 @@
+﻿syntax = "proto3";
+package lotresult;
+
+service LotService {
+  rpc GetLot (LotRequest) returns (LotResponse);
+  rpc GetWafer (WaferRequest) returns (WaferResponse);
+  rpc GetDefects (DefectsRequest) returns (DefectsResponse);
+  rpc GetDefectsStream (DefectsRequest) returns (stream DefectsResponse);
+}
+
+message LotRequest {
+  string Name = 1;
+}
+message LotResponse {
+  string Name = 1;
+  int32 Id = 2;
+  repeated int32 WaferIds = 3;
+}
+
+message WaferRequest {
+  int32 Id = 1;
+}
+message WaferResponse {
+	string Name = 1;
+	int32 Id = 2;
+	repeated int32 DefectIds = 3;
+}
+
+message DefectsRequest {
+	int32 WaferId = 1;
+}
+message DefectsResponse {
+	repeated Defect Defects = 1;
+}
+
+message Defect {
+	int32 Id = 1;
+	int32 X = 2;
+	int32 Y = 3;
+	int32 Classcode = 4;
+	int32 Classcode1 = 5;
+	int32 Classcode2 = 6;
+	int32 Classcode3 = 7;
+	int32 Classcode4 = 8;
+	int32 Classcode5 = 9;
+	int32 Classcode6 = 10;
+	int32 Classcode7 = 11;
+	int32 Classcode8 = 12;
+	int32 Classcode9 = 13;
+	int32 Roughcode = 14;
+	repeated int32 DynamicValues = 15;
+}
